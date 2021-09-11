@@ -20,6 +20,9 @@ mongoose
   .then(() => console.log("MONGODB Connected successfully"))
   .catch((err) => console.log(err));
 
+app.get("/", (req, res) => {
+  console.log(Home);
+});
 app.use("/auth", authRoute);
 
 app.listen(5000, () => {
