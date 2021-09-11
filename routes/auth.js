@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const CryptoJS = require("crypto-js");
 const crypto = require("crypto");
-const bcrypt = require("bcryptjs");
 
 const nodemailer = require("nodemailer");
 
@@ -9,12 +8,12 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 const URL = "http://localhost:5000/auth";
-
+const pass = "9791627920";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "noreplydummy123@gmail.com",
-    pass: process.env.pass,
+    pass: pass,
   },
 });
 
