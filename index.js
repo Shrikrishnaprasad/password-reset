@@ -7,6 +7,8 @@ const authRoute = require("./routes/auth");
 
 const app = express();
 
+const PORT = process.env.PORT;
+
 dotenv.config();
 app.use(express.json());
 app.use(cors());
@@ -25,6 +27,6 @@ app.get("/", (req, res) => {
 });
 app.use("/auth", authRoute);
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("Server is running");
 });
