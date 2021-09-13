@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-const URL = "http://localhost:5000/auth";
+const URL = "https://password-reset-link.netlify.app";
 const pass = "9791627920";
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -78,9 +78,9 @@ router.post("/reset-password", (req, res) => {
             to: user.email,
             from: "noreplydummy123@gmail.com",
             subject: "Password reset",
-            html: `<p>You requested for password reset</p><h5>click in this <a href="${URL}/reset/${token}">link</a> to reset password</h5>                     `,
+            html: `<p>You requested for password reset</p><h5>click in this <a href="${URL}/new-password/${token}">link</a> to reset password</h5>                     `,
           });
-          res.json({ message: "check your email" });
+          res.json({ message: "Check your email and click that reset link" });
         })
         .catch((error) => console.log(error));
     });
@@ -102,7 +102,7 @@ router.post("/new-password", (req, res) => {
       user.resetToken = undefined;
       user.expireToken = undefined;
       user.save().then((saveduser) => {
-        res.json({ message: "password updated success" });
+        res.json({ message: "Password updated successfully" });
       });
       // bcrypt.hash(newPassword, 12).then((hashedpassword) => {
 
